@@ -4,6 +4,11 @@
 <div class="container-xxl">
     <div class="row justify-content-center">
         <div class="col-md-10">
+            @if (session('success'))
+                <div class="alert alert-success my-5" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="col-md-4">
                     <div class="px-4 px-sm-0">
@@ -37,14 +42,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="email">Email Address</label>
-                                <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email">
+                                <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ auth()->user()->email }}" autocomplete="email">
                                 @error('email')
                                 <span class="invalid-feedback" role="alert"><strong> {{ $message }} </strong></span>
                                 @enderror
                             </div>
                         </div>
                         <div class="card-footer bg-white text-right">
-                            <button class="btn btn-primary">Save</button>
+                            <button class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -63,32 +68,36 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card shadow">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="current_password">Current Password</label>
-                                <input type="password" name="current_password" id="current_password" class="form-control @error('current_password') is-invalid @enderror" autocomplete="current-password">
-                                @error('current_password')
-                                <span class="invalid-feedback" role="alert"><strong> {{ $message }} </strong></span>
-                                @enderror
+                        <form action="{{ route('profile.update', auth()->id()) }}" method="POST">
+                            @method('PATCH')
+                            @csrf
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="current_password">Current Password</label>
+                                    <input type="password" name="current_password" id="current_password" class="form-control @error('current_password') is-invalid @enderror" value="{{ old('current_password') }}" autocomplete="current-password">
+                                    @error('current_password')
+                                    <span class="invalid-feedback" role="alert"><strong> {{ $message }} </strong></span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">New Password</label>
+                                    <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" autocomplete="new-password">
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert"><strong> {{ $message }} </strong></span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="password_confirmation">Confirm Password</label>
+                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" value="{{ old('password_confirmation') }}" autocomplete="new-password">
+                                    @error('password_confirmation')
+                                    <span class="invalid-feedback" role="alert"><strong> {{ $message }} </strong></span>
+                                    @enderror
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="password">New Password</label>
-                                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" autocomplete="new-password">
-                                @error('password')
-                                <span class="invalid-feedback" role="alert"><strong> {{ $message }} </strong></span>
-                                @enderror
+                            <div class="card-footer bg-white text-right">
+                                <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
-                            <div class="form-group">
-                                <label for="password_confirmation">New Password</label>
-                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" autocomplete="new-password">
-                                @error('password_confirmation')
-                                <span class="invalid-feedback" role="alert"><strong> {{ $message }} </strong></span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white text-right">
-                            <button class="btn btn-primary">Save</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

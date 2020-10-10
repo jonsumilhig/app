@@ -74,4 +74,9 @@ class User extends Authenticatable
     {
         return isset($_ENV['VAPOR_ARTIFACT_NAME']) ? 's3' : 'public';
     }
+
+    public function setPasswordAttribute ($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }

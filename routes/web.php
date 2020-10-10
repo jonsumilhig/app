@@ -21,7 +21,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::resource('profile', \App\Http\Controllers\ProfileController::class)->parameter('profile', 'user');
+    Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::prefix('profile')->name('profile.')->group(function () {
+        Route::get('', [\App\Http\Controllers\Profile\ProfileController::class, 'index'])->name('index');
+        Route::patch('password{user}', [\App\Http\Controllers\Profile\UpdatePasswordController::class, 'update'])->name('update');
+        Route::delete('delete{user}', [\App\Http\Controllers\Profile\DeleteAccountController::class, 'destroy'])
+            ->name('destroy');
+    });
 });
 
