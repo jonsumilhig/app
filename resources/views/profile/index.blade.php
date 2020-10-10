@@ -21,7 +21,7 @@
                 <div class="col-md-6">
                     <div class="card shadow">
                         <div class="card-body">
-                            <form id="frmInformation" action="{{ route('profile.update.information', auth()->id()) }}" method="POST" enctype="multipart/form-data">
+                            <form id="frmInformation" action="{{ route('profile.update.information', auth()->user()->uuid) }}" method="POST" enctype="multipart/form-data">
                                 @method('PATCH')
                                 @csrf
                                 <div class="text-center">
@@ -54,7 +54,7 @@
                         </div>
                         <div class="card-footer bg-white text-right">
                             @if (auth()->user()->profile_photo_path)
-                                <form id="frmPhoto" action="{{ route('profile.update.photo', auth()->id()) }}" method="POST" class="d-none">
+                                <form id="frmPhoto" action="{{ route('profile.update.photo', auth()->user()->uuid) }}" method="POST" class="d-none">
                                     @method('PATCH')
                                     @csrf
                                 </form>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card shadow">
-                        <form action="{{ route('profile.update.password', auth()->id()) }}" method="POST">
+                        <form action="{{ route('profile.update.password', auth()->user()->uuid) }}" method="POST">
                             @method('PATCH')
                             @csrf
                             <div class="card-body">
@@ -142,7 +142,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <p class="text-sm text-gray-600">Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.</p>
-                                            <form id="deleteAccount" action="{{ route('profile.destroy', auth()->id()) }}" method="POST">
+                                            <form id="deleteAccount" action="{{ route('profile.destroy', auth()->user()->uuid) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <div class="form-group">
