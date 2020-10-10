@@ -1,0 +1,28 @@
+$text-opacity: 1;
+.text-gray-600 {
+    color: #4b5563;
+    color: rgba(75, 85, 99, $text-opacity);
+}
+.text-gray-700 {
+    color: #374151;
+    color: rgba(55, 65, 81, $text-opacity);
+}
+.text-gray-900 {
+    color: #161e2e;
+    color: rgba(22, 30, 46, $text-opacity);
+}
+.text-gray-500 {
+    color: #6b7280;
+    color: rgba(107, 114, 128, $text-opacity);
+}
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+}
+
+.font-medium {
+    font-weight: 500;
+}
