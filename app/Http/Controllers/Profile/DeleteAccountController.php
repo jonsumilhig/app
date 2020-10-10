@@ -29,9 +29,9 @@ class DeleteAccountController extends Controller
      */
     public function destroy(User $user)
     {
-        if (! Hash::check(request()->password, request()->user()->password)) {
+        if (! Hash::check(request()->confirm_password, request()->user()->password)) {
             return back()->withErrors([
-                'confirm-password' => ['The provided password does not match our records.']
+                'confirm_password' => ['The provided password does not match our records.']
             ]);
         }
         $user->delete();

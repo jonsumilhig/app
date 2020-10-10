@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_photo_path'
     ];
 
     /**
@@ -53,6 +54,20 @@ class User extends Authenticatable
         return $this->profile_photo_path
             ? Storage::disk($this->profilePhotoDisk())->url($this->profile_photo_path)
             : $this->defaultProfilePhotoUrl();
+    }
+
+    /**
+     * Delete the user's profile photo.
+     *
+     * @return void
+     */
+    public function deleteProfilePhoto()
+    {
+        Storage::disk($this->profilePhotoDisk())->delete($this->profile_photo_path);
+
+        $this->forceFill([
+            'profile_photo_path' => null,
+        ])->save();
     }
 
     /**

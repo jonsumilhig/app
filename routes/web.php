@@ -25,8 +25,10 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('profile')->name('profile.')->group(function () {
         Route::get('', [\App\Http\Controllers\Profile\ProfileController::class, 'index'])->name('index');
-        Route::patch('password{user}', [\App\Http\Controllers\Profile\UpdatePasswordController::class, 'update'])->name('update');
-        Route::delete('delete{user}', [\App\Http\Controllers\Profile\DeleteAccountController::class, 'destroy'])
+        Route::patch('information/{user}', [\App\Http\Controllers\Profile\UpdateProfileInformationController::class, 'update'])->name('update.information');
+        Route::patch('photo/{user}', [\App\Http\Controllers\Profile\UpdateProfileInformationController::class, 'deleteProfilePhoto'])->name('update.photo');
+        Route::patch('password/{user}', [\App\Http\Controllers\Profile\UpdatePasswordController::class, 'update'])->name('update.password');
+        Route::delete('delete/{user}', [\App\Http\Controllers\Profile\DeleteAccountController::class, 'destroy'])
             ->name('destroy');
     });
 });
