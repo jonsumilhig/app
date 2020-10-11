@@ -75,6 +75,9 @@
                         <p class="mt-1 text-sm text-gray-600">
                             Ensure your account is using a long, random password to stay secure.
                         </p>
+                        <p class="mt-1 text-sm text-gray-600">
+                            After changing password, you must log back in.
+                        </p>
                     </div>
                 </div>
                 <div class="col-md-6">

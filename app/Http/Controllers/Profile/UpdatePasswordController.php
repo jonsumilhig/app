@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Profile;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UpdatePasswordController extends Controller
 {
@@ -32,8 +33,8 @@ class UpdatePasswordController extends Controller
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required|min:6'
         ]);
-
         $user->update(['password' => bcrypt($request->password)]);
-        return redirect()->route('profile.index')->with('success', 'Your password has been updated successfully');
+        Auth::logout();
+        return redirect()->route('home');
     }
 }
