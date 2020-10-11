@@ -121,6 +121,84 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="px-4 px-sm-0">
+                        <h3 class="text-lg font-medium text-gray-900">Two Factor Authentication</h3>
+                        <p class="mt-1 text-sm text-gray-600">
+                            Add additional security to your account using two factor authentication.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h3 class="text-lg font-medium text-gray-900">
+                                @if ($enableTwoFactorAuthentication)
+                                    {{ __('You have enabled two factor authentication.') }}
+                                @else
+                                    {{ __('You have not enabled two factor authentication.') }}
+                                @endif
+                            </h3>
+
+                            <div class="mt-3 text-sm text-gray-600">
+                                <p>
+                                    When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.
+                                </p>
+                            </div>
+                            @if ($enableTwoFactorAuthentication)
+
+                                <div class="mt-4 text-sm text-gray-600">
+                                    <p class="font-semibold">
+                                        {{ __('Two factor authentication is now enabled. Scan the following QR code using your phone\'s authenticator application.') }}
+                                    </p>
+                                </div>
+
+                                <div class="mt-4">
+                                    {!! auth()->user()->twoFactorQrCodeSvg() !!}
+                                </div>
+
+                                <div class="mt-4 text-sm text-gray-600">
+                                    <p class="font-semibold">
+                                        {{ __('Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.') }}
+                                    </p>
+                                </div>
+
+                                <div class="grid gap-1 max-w-xl mt-4 px-4 py-4 text-sm bg-gray-100 rounded-lg">
+                                    @foreach (json_decode(decrypt(auth()->user()->two_factor_recovery_codes), true) as $code)
+                                        <div>{{ $code }}</div>
+                                    @endforeach
+                                </div>
+                            @endif
+                            <div class="mt-5 space-x-1 space-y-1">
+                                @if (!$enableTwoFactorAuthentication)
+                                    <form action="{{ route('profile.enable.twoFactorAuthentication', auth()->user()->uuid) }}" method="post">
+                                        @method('patch')
+                                        @csrf
+                                        <button type="submit" class="btn btn-dark">Enable</button>
+                                    </form>
+                                @else
+                                    <div class="d-flex space-x-1">
+                                        <form action="{{ route('profile.regenerate.twoFactorAuthentication', auth()->user()->uuid) }}" method="post">
+                                            @method('patch')
+                                            @csrf
+                                            <button type="submit" class="btn btn-light">Regenerate Recovery Codes</button>
+                                        </form>
+                                        <form action="{{ route('profile.disable.twoFactorAuthentication', auth()->user()->uuid) }}" method="post">
+                                            @method('patch')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">Disable</button>
+                                        </form>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-8">
+                <div class="border-top"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="px-4 px-sm-0">
                         <h3 class="text-lg font-medium text-gray-900">Browser Sessions</h3>
                         <p class="mt-1 text-sm text-gray-600">
                             Manage and logout your active sessions on other browsers and devices.

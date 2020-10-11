@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Services\LogoutOtherBrowserSession;
-use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
@@ -26,6 +25,9 @@ class ProfileController extends Controller
      */
     public function index(LogoutOtherBrowserSession $logoutOtherBrowserSession)
     {
-        return view('profile.index', ['sessions' => $logoutOtherBrowserSession->getSessionsProperty()]);
+        return view('profile.index', [
+            'sessions' => $logoutOtherBrowserSession->getSessionsProperty(),
+            'enableTwoFactorAuthentication' => !empty(auth()->user()->two_factor_secret)
+        ]);
     }
 }
