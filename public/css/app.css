@@ -17255,76 +17255,58 @@ a.text-dark:focus {
 
 .btn-light {
   background-color: #ffffff !important;
-  background-color: white !important;
   border-color: #d2d6dc !important;
-  border-color: #d2d6dc !important;
-  color: #374151 !important;
   color: #374151 !important;
 }
 
 .btn-light:hover {
   color: #6b7280 !important;
-  color: #6b7280 !important;
 }
 
 .btn-light:focus {
-  border-color: #a4cafe !important;
   border-color: #a4cafe !important;
   box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45) !important;
 }
 
 .btn-light:active {
   color: #252f3f !important;
-  color: #252f3f !important;
-  background-color: #f9fafb !important;
   background-color: #f9fafb !important;
 }
 
 .btn-danger {
   background-color: #e02424 !important;
-  background-color: #e02424 !important;
   color: #ffffff !important;
-  color: white !important;
 }
 
 .btn-danger:hover {
   background-color: #f05252 !important;
-  background-color: #f05252 !important;
   color: #ffffff !important;
-  color: white !important;
 }
 
 .btn-danger:focus {
-  border-color: #c81e1e !important;
   border-color: #c81e1e !important;
   box-shadow: 0 0 0 3px rgba(248, 180, 180, 0.45) !important;
 }
 
 .btn-danger:active {
   background-color: #e02424 !important;
-  background-color: #e02424 !important;
 }
 
 .btn-dark {
   background-color: #252f3f !important;
-  background-color: #252f3f !important;
   color: #ffffff !important;
-  color: white !important;
 }
 
 .btn-dark:hover {
-  background-color: #374151 !important;
   background-color: #374151 !important;
 }
 
 .btn-dark:focus {
   border-color: #161e2e !important;
-  border-color: #161e2e !important;
   box-shadow: 0 0 0 3px rgba(159, 166, 178, 0.45) !important;
 }
 
 .btn-dark:active {
-  background-color: #161e2e !important;
   background-color: #161e2e !important;
 }
 
@@ -17334,22 +17316,22 @@ a.text-dark:focus {
 
 .text-gray-600 {
   color: #4b5563;
-  color: #4b5563;
 }
 
 .text-gray-700 {
-  color: #374151;
   color: #374151;
 }
 
 .text-gray-900 {
   color: #161e2e;
-  color: #161e2e;
 }
 
 .text-gray-500 {
   color: #6b7280;
-  color: #6b7280;
+}
+
+.text-green-500 {
+  color: #0e9f6e;
 }
 
 .text-sm {
@@ -17362,5 +17344,11 @@ a.text-dark:focus {
 
 .font-medium {
   font-weight: 500;
+}
+
+.space-y-6 > :not(template) ~ :not(template) {
+  --space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--space-y-reverse));
 }
 

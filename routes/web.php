@@ -27,6 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('', [\App\Http\Controllers\Profile\ProfileController::class, 'index'])->name('index');
         Route::patch('information/{user}', [\App\Http\Controllers\Profile\UpdateProfileInformationController::class, 'update'])->name('update.information');
         Route::patch('photo/{user}', [\App\Http\Controllers\Profile\UpdateProfileInformationController::class, 'deleteProfilePhoto'])->name('update.photo');
+        Route::delete('logout/session/{user}', [\App\Http\Controllers\Profile\LogoutOtherBrowserSessionController::class, 'destroy'])->name('destroy.logout.session');
         Route::patch('password/{user}', [\App\Http\Controllers\Profile\UpdatePasswordController::class, 'update'])->name('update.password');
         Route::delete('delete/{user}', [\App\Http\Controllers\Profile\DeleteAccountController::class, 'destroy'])
             ->name('destroy');

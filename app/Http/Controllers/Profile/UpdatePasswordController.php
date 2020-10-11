@@ -33,7 +33,7 @@ class UpdatePasswordController extends Controller
             'password_confirmation' => 'required|min:6'
         ]);
 
-        $user->update($request->only('password'));
+        $user->update(['password' => bcrypt($request->password)]);
         return redirect()->route('profile.index')->with('success', 'Your password has been updated successfully');
     }
 }
