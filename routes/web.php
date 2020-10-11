@@ -18,9 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::prefix('profile')->name('profile.')->group(function () {
