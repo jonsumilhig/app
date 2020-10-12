@@ -10,7 +10,6 @@
     "require": {
         "php": "^7.3",
         "ext-json": "*",
-        "bacon/bacon-qr-code": "^2.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -18,8 +17,7 @@
         "jenssegers/agent": "^2.6",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^3.0",
-        "pragmarx/google2fa": "^8.0"
+        "laravel/ui": "^3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
