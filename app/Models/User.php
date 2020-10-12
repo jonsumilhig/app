@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Actions\TwoFactorAuthentication\TwoFactorAuthenticatable;
 use App\Helpers\hasUuid;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +14,6 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, SoftDeletes;
     use hasUuid;
-    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.

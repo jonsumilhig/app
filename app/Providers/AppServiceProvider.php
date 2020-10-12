@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Contracts\TwoFactorAuthenticationProvider as TwoFactorAuthenticationProviderContract;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,10 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(
-            TwoFactorAuthenticationProviderContract::class,
-            TwoFactorAuthenticationProvider::class,
-        );
+        //
     }
 
     /**

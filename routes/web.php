@@ -25,10 +25,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::patch('information/{user}', [UpdateProfileInformationController::class, 'update'])->name('update.information');
         Route::delete('photo/{user}', [UpdateProfileInformationController::class, 'deleteProfilePhoto'])->name('delete.photo');
 
-        Route::patch('enable/twoFactorAuthentication/{user}', [TwoFactorAuthenticationController::class, 'enable'])->name('enable.twoFactorAuthentication');
-        Route::patch('disable/twoFactorAuthentication/{user}', [TwoFactorAuthenticationController::class, 'disable'])->name('disable.twoFactorAuthentication');
-        Route::patch('regenerate/twoFactorAuthentication/{user}', [TwoFactorAuthenticationController::class, 'regenerate'])->name('regenerate.twoFactorAuthentication');
-
         Route::delete('logout/session/{user}', [LogoutOtherBrowserSessionController::class, 'destroy'])->name('destroy.logout.session');
 
         Route::patch('password/{user}', [UpdatePasswordController::class, 'update'])->name('update.password');
