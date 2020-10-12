@@ -55,8 +55,8 @@
                         </div>
                         <div class="card-footer bg-white text-right">
                             @if (auth()->user()->profile_photo_path)
-                                <form id="frmPhoto" action="{{ route('profile.update.photo', auth()->user()->uuid) }}" method="POST" class="d-none">
-                                    @method('PATCH')
+                                <form id="frmPhoto" action="{{ route('profile.delete.photo', auth()->user()->uuid) }}" method="POST" class="d-none">
+                                    @method('delete')
                                     @csrf
                                 </form>
                                 <button type="submit" form="frmPhoto" class="btn btn-light">Remove Photo</button>

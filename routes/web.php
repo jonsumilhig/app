@@ -23,7 +23,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('', [ProfileController::class, 'index'])->name('index');
 
         Route::patch('information/{user}', [UpdateProfileInformationController::class, 'update'])->name('update.information');
-        Route::patch('photo/{user}', [UpdateProfileInformationController::class, 'deleteProfilePhoto'])->name('update.photo');
+        Route::delete('photo/{user}', [UpdateProfileInformationController::class, 'deleteProfilePhoto'])->name('delete.photo');
 
         Route::patch('enable/twoFactorAuthentication/{user}', [TwoFactorAuthenticationController::class, 'enable'])->name('enable.twoFactorAuthentication');
         Route::patch('disable/twoFactorAuthentication/{user}', [TwoFactorAuthenticationController::class, 'disable'])->name('disable.twoFactorAuthentication');
