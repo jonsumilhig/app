@@ -12,4 +12,21 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+
+let sass = mix.sass('resources/sass/app.scss', 'public/css')
+
+if (mix.inProduction()) {
+    sass.options({
+        postCss: [
+            require('@fullhuman/postcss-purgecss')({
+                content: [
+                    './node_modules/bootstrap/dist/js/**/*.js',
+                    './node_modules/admin-lte/build/js/**/*.js',
+                    './resources/js/**/*.js',
+                    './resources/views/**/*.blade.php'
+                ]
+            })
+        ]
+    });
+}
+

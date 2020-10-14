@@ -4,7 +4,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Profile\DeleteAccountController;
 use App\Http\Controllers\Profile\LogoutOtherBrowserSessionController;
 use App\Http\Controllers\Profile\ProfileController;
-use App\Http\Controllers\Profile\TwoFactorAuthenticationController;
 use App\Http\Controllers\Profile\UpdatePasswordController;
 use App\Http\Controllers\Profile\UpdateProfileInformationController;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 
 Auth::routes(['verify' => true]);
 
